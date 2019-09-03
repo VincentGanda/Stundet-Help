@@ -1,26 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import NavbarComp from './components/Navbar/Navbar'
+import {withRouter, Route, Switch} from 'react-router-dom'
+import Auth from './components/Auth/Auth'
+import Ayo_bergabung from './Pages/Ayo_bergabung/Ayo_bergabung'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component{
+  render(){
+    return(
+      <div>
+      <NavbarComp/>
+      <Switch>
+        <Route component={Auth} path='/Auth' exact />
+        <Route component={Ayo_bergabung} path='/Ayo_bergabung' exact />
+      </Switch>
+      </div>
+    )
+  }
 }
-
 export default App;
