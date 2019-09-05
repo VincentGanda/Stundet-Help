@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
 import './Auth.css'
+// 1. Import action itu sendiri
+import {onLogin, onRegister} from './../../redux/1.actions'
+// 2. Import connect dari react-redux
+import {connect} from 'react-redux'
+import Cookie from 'universal-cookie'
 import {Redirect} from 'react-router-dom'
 import swal from 'sweetalert';
 
+
+let cookieObj = new Cookie()
 
 class Auth extends Component {
     state = {
@@ -16,8 +23,16 @@ class Auth extends Component {
         isSame : true
     }
 
+    componentWillReceiveProps(newProps){
+        cookieObj.set('userData', newProps.username, {path : '/'})
+    }
 
     onLoginBtnHandler = () => {
+        // let loginObj = {
+        //     username : this.state.loginUsername,
+        //     password : this.state.loginPassword
+        // }
+        // this.props.onLogout()
         this.props.onLogin({asalNama : this.state.loginUsername, asalKunci : this.state.loginPassword})
     }
 
@@ -50,6 +65,9 @@ class Auth extends Component {
         }
     }
 
+    validateInputRegister = () => {
+        
+    }
 
     passwordChecker = () => {
         if(!this.state.isSame){
@@ -67,7 +85,9 @@ class Auth extends Component {
     }
 
     render() {
-        
+        if(this.props.username !== ''){
+            return <Redirect to="/" exact />
+        }
         return (
             <div className="container auth">
                 {
@@ -168,11 +188,16 @@ class Auth extends Component {
     }
 }
 
-
+const mapStateToProps = (state) => {
+    return {
+        isLoading : state.user.loading,
+        message : state.user.msg,
+        username : state.user.username
+    }
+}
 
 // 3. connect (<MAPSTATETOPROPS>, {<ACTION>})(<COMPONENT>)
-export default Auth;
-
+export default connect(mapStateToProps, {onLogin, onRegister})(Auth);
 
 
 
