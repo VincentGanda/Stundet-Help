@@ -1,26 +1,14 @@
 import React from 'react';
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem } from 'reactstrap';
-  import './Navbar.css'
-  import Homepage from '../../Pages/Homepage/Homepage'
-  import {Link} from 'react-router-dom'
-  import Auth from '../Auth/Auth'
-  
-  // import {connect} from 'react-redux'
-  
+import './Navbar.css'
+
+import {Link} from 'react-router-dom'
+import Homepage from '../../Pages/Homepage/Homepage';
 
 
 class NavbarComp extends React.Component {
+  state = {
+    drawerOpen : true
+  }
  
   render() {
     return (
@@ -34,17 +22,33 @@ class NavbarComp extends React.Component {
       
       <link rel="stylesheet" href="style5.css" />
       
-      <div className="wrapper">
+      <div className="wrapper d-inline-block">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <div className="container-fluid">
+              <button type="button" id="sidebarCollapse" className="navbar-btn" onClick={() => this.setState({drawerOpen : !this.state.drawerOpen})}>
+                <span />
+                <span />
+                <span />
+              </button>
+              <div>
+                <ul className="nav navbar-nav ml-auto">
+                <Link to='/auth'className='nav-link'><li className="nav-item active">
+                    Login / Register
+                  </li></Link>
+                </ul>
+              </div>
+            </div>
+          </nav>
        
-        <nav id="sidebar">
+        <nav id="sidebar" className={'d-inline-block ' + (this.state.drawerOpen ? 'active' : null)}>
           <div className="sidebar-header">
             <h3>Selamat datang di Student Help!</h3>
           </div>
           <ul className="list-unstyled components">
             <p>Edukasi gratis untuk anak Indonesia</p>
-            <li>
-              <a href="#">Homepage</a>
-            </li>
+            <Link to='/'><li>
+              <a>Homepage</a>
+            </li></Link>
             <li>
               <a href="#">Team Kami</a>
             </li>
@@ -69,30 +73,8 @@ class NavbarComp extends React.Component {
         </nav>
         {/* Page Content Holder */}
         <div id="content">
-          <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <div className="container-fluid">
-              <button type="button" id="sidebarCollapse" className="navbar-btn">
-                <span />
-                <span />
-                <span />
-              </button>
-              <button className="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <i className="fas fa-align-justify" />
-              </button>
-              <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul className="nav navbar-nav ml-auto">
-                  <li className="nav-item active">
-                    <Link to='../Auth/Auth'><a className="nav-link" href='../Auth/Auth'>Login</a></Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link to='../Auth/Auth'><a className="nav-link" href='../Auth/Auth'>Register</a></Link>
-                  </li>
-                 
-                </ul>
-              </div>
-            </div>
-          </nav>
-         <Homepage />
+          
+         <Homepage/>
           
         </div>
       </div>
