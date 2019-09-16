@@ -5,62 +5,69 @@ import {
 MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBFormInline,
 MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem
 } from "mdbreact";
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem } from 'reactstrap';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 class NavbarPage extends Component {
-state = {
-  isOpen: false
-};
+  constructor(props) {
+    super(props);
 
-toggleCollapse = () => {
-  this.setState({ isOpen: !this.state.isOpen });
-}
-
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      isOpen: false
+    };
+  }
+  toggle() {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  }
 render() {
   return (
-    <Router>
-      <MDBNavbar color="black" dark expand="md">
-        <MDBNavbarBrand>
-          <strong className="white-text">Student-Help</strong>
-        </MDBNavbarBrand>
-        <MDBNavbarToggler onClick={this.toggleCollapse} />
-        <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
-          <MDBNavbarNav left>
-            <MDBNavItem active>
-              <MDBNavLink to="#!">Home</MDBNavLink>
-            </MDBNavItem>
-            <MDBNavItem>
-              <MDBNavLink to="#!">About Us</MDBNavLink>
-            </MDBNavItem>
-            <MDBNavItem>
-              <MDBNavLink to="#!">Donate</MDBNavLink>
-            </MDBNavItem>
-            <MDBNavItem>
-              <MDBDropdown>
-                <MDBDropdownToggle nav caret>
-                  <span className="mr-2">Subjects</span>
-                </MDBDropdownToggle>
-                <MDBDropdownMenu>
-                  <MDBDropdownItem href="#!">Biology</MDBDropdownItem>
-                  <MDBDropdownItem href="#!">Chemistry</MDBDropdownItem>
-                  <MDBDropdownItem href="#!">Mathematics</MDBDropdownItem>
-                  <MDBDropdownItem href="#!">Physics</MDBDropdownItem>
-                </MDBDropdownMenu>
-              </MDBDropdown>
-            </MDBNavItem>
-          </MDBNavbarNav>
-          <MDBNavbarNav right>
-            <MDBNavItem>
-              <MDBFormInline waves>
-                <div className="md-form my-0">
-                  <input className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" />
-                </div>
-              </MDBFormInline>
-            </MDBNavItem>
-          </MDBNavbarNav>
-        </MDBCollapse>
-      </MDBNavbar>
-    </Router>
+    <div>
+        <Navbar color="dark" dark expand="md">
+          <NavbarBrand href="/">reactstrap</NavbarBrand>
+          <NavbarToggler onClick={this.toggle} />
+          <Collapse isOpen={this.state.isOpen} navbar>
+            <Nav className="ml-auto" navbar>
+              <NavItem>
+                <NavLink href="/components/">Components</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+              </NavItem>
+              <UncontrolledDropdown nav inNavbar>
+                <DropdownToggle nav caret>
+                  Options
+                </DropdownToggle>
+                <DropdownMenu right>
+                  <DropdownItem>
+                    Option 1
+                  </DropdownItem>
+                  <DropdownItem>
+                    Option 2
+                  </DropdownItem>
+                  <DropdownItem divider />
+                  <DropdownItem>
+                    Reset
+                  </DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
+            </Nav>
+          </Collapse>
+        </Navbar>
+      </div>
     );
   }
 }
