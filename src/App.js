@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import NavbarComp from './components/Navbar/Navbar'
 import {withRouter, Route, Switch} from 'react-router-dom'
-import Auth from './components/Auth/Auth'
 import Background from './components/Background/Background'
 import FooterPage from './components/Footer/Footer'
+import Homepage from './Pages/Homepage/Homepage'
+import Pelajaran from './Pages/Pelajaran/Pelajaran'
+import Auth from './components/Auth/Auth'
+
 
 
 class App extends Component{
@@ -13,8 +16,9 @@ class App extends Component{
       <NavbarComp/>
       <Background />
       <Switch>
-        {/* <Route component={Homepage} path='/' exact /> */}
-        <Route component={Auth} path='/auth' exact/>
+        <Route path = '/' component={Homepage} exact />
+        <Route path ='/pelajaran' component = {Pelajaran} exact /> 
+        <Route path ='/auth' component={Auth} exact />
       </Switch>
       <FooterPage />
       </div>
