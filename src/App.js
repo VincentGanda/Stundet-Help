@@ -6,6 +6,8 @@ import FooterPage from './components/Footer/Footer'
 import Homepage from './Pages/Homepage/Homepage'
 import Pelajaran from './Pages/Pelajaran/Pelajaran'
 import Auth from './components/Auth/Auth'
+import Kontak from './Pages/Kontak/Kontak'
+import Home from './components/Home/Home'
 
 
 
@@ -14,11 +16,11 @@ class App extends Component{
     return(
       <div>
       <NavbarComp/>
-      <Background />
       <Switch>
-        <Route path = '/' component={Homepage} exact />
+        <Route path = '/' component={Home} exact />
         <Route path ='/pelajaran' component = {Pelajaran} exact /> 
         <Route path ='/auth' component={Auth} exact />
+        <Route path ='/kontak' component={Kontak} exact/>
       </Switch>
       <FooterPage />
       </div>

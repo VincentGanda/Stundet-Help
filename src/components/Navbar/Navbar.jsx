@@ -42,10 +42,10 @@ render() {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <Link to='/auth'>Masuk</Link>
+              <NavLink href="/auth">Masuk</NavLink>
               </NavItem>
               <NavItem>
-                <Link to='/pelajaran'>Mulai Belajar</Link>
+                <NavLink href="/pelajaran">Mulai Belajar</NavLink>
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
@@ -53,10 +53,10 @@ render() {
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem>
-                    Kontak 
+                  <NavLink href="/kontak">Kontak</NavLink>
                   </DropdownItem>
                   <DropdownItem>
-                    History
+                  <NavLink href="/history">History</NavLink>
                   </DropdownItem>
                   <DropdownItem divider />
                   <DropdownItem>
