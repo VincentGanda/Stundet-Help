@@ -4,10 +4,11 @@ import {withRouter, Route, Switch} from 'react-router-dom'
 import Background from './components/Background/Background'
 import FooterPage from './components/Footer/Footer'
 import Homepage from './Pages/Homepage/Homepage'
-import Pelajaran from './Pages/Pelajaran/Pelajaran'
+import Pelajaran from './components/Pelajaran/Pelajaran'
 import Auth from './components/Auth/Auth'
 import Kontak from './Pages/Kontak/Kontak'
 import Home from './components/Home/Home'
+import UtamaBiologi from './components/Biologi/Homepage/UtamaBiologi'
 
 
 
@@ -21,6 +22,7 @@ class App extends Component{
         <Route path ='/pelajaran' component = {Pelajaran} exact /> 
         <Route path ='/auth' component={Auth} exact />
         <Route path ='/kontak' component={Kontak} exact/>
+        <Route path ='/UtamaBiologi' component = {UtamaBiologi} exact />
       </Switch>
       <FooterPage />
       </div>

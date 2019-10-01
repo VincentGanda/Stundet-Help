@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom'
+
 
 class Pelajaran extends Component {
     render() {
         return (
             <div>
-                <h2>Biologi</h2>
+                <Link to="/UtamaBiologi"><h2>Biologi</h2></Link>
                 <p>Pelajaran yang bikin kamu mabok hapalan</p>
-                <h2>Matematika</h2>
+                <Link><h2>Matematika</h2></Link>
                 <p>Pelajaran yang bikin anak nangis</p>
-                <h2>Fisika</h2>
+                <Link><h2>Fisika</h2></Link>
                 <p>Susah itu relatif</p>
-                <h2>Kimia</h2>
+                <Link><h2>Kimia</h2></Link>
                 <p>Reaksimu belajar kimia lebih takut daripada ditolak gebetan</p>
             </div>
         );
