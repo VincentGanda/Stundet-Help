@@ -9,6 +9,7 @@ import Auth from './components/Auth/Auth'
 import Kontak from './Pages/Kontak/Kontak'
 import Home from './components/Home/Home'
 import UtamaBiologi from './components/Biologi/Homepage/UtamaBiologi'
+import Sel from './components/Biologi/Sel/Sel'
 
 
 
@@ -23,6 +24,7 @@ class App extends Component{
         <Route path ='/auth' component={Auth} exact />
         <Route path ='/kontak' component={Kontak} exact/>
         <Route path ='/UtamaBiologi' component = {UtamaBiologi} exact />
+        <Route path="/UtamaBiologi/Sel" component = {Sel} exact />
       </Switch>
       <FooterPage />
       </div>
